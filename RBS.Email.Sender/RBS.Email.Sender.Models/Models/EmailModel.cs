@@ -1,4 +1,4 @@
-﻿namespace RBS.Email.Sender.WebApi.Models
+﻿namespace RBS.Email.Sender.Common.Models
 {
     public class EmailModel
     {
