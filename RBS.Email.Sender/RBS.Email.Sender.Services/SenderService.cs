@@ -2,6 +2,7 @@
 using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
+using RBS.Email.Sender.Common.Models;
 using RBS.Email.Sender.Services.Interface;
 
 namespace RBS.Email.Sender.Services;
@@ -12,7 +13,7 @@ public class SenderService : ISenderService
     {
     }
 
-    public void Send()
+    public async Task Send(EmailModel model)
     {
         var email = new MimeMessage();
 

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBS.Email.Sender.Services", "RBS.Email.Sender.Services\RBS.Email.Sender.Services.csproj", "{31534C05-59F9-480B-A8CB-AF00A622120B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RBS.Email.Sender.Services", "RBS.Email.Sender.Services\RBS.Email.Sender.Services.csproj", "{31534C05-59F9-480B-A8CB-AF00A622120B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBS.Email.Sender.WebApi", "RBS.Email.Sender.WebApi\RBS.Email.Sender.WebApi.csproj", "{6BE8E913-4125-4635-B0F6-C416DFF32235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RBS.Email.Sender.WebApi", "RBS.Email.Sender.WebApi\RBS.Email.Sender.WebApi.csproj", "{6BE8E913-4125-4635-B0F6-C416DFF32235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBS.Email.Sender.Common", "RBS.Email.Sender.Models\RBS.Email.Sender.Common.csproj", "{32FEF4B7-848E-4270-8F7A-B2A2B97E9753}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6BE8E913-4125-4635-B0F6-C416DFF32235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BE8E913-4125-4635-B0F6-C416DFF32235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BE8E913-4125-4635-B0F6-C416DFF32235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32FEF4B7-848E-4270-8F7A-B2A2B97E9753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32FEF4B7-848E-4270-8F7A-B2A2B97E9753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32FEF4B7-848E-4270-8F7A-B2A2B97E9753}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32FEF4B7-848E-4270-8F7A-B2A2B97E9753}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

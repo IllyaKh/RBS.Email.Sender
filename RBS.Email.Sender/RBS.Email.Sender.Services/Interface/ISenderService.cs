@@ -1,6 +1,8 @@
-﻿namespace RBS.Email.Sender.Services.Interface;
+﻿using RBS.Email.Sender.Common.Models;
+
+namespace RBS.Email.Sender.Services.Interface;
 
 public interface ISenderService
 {
-    void Send();
+    Task Send(EmailModel model);
 }
