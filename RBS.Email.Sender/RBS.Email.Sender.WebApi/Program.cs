@@ -17,6 +17,11 @@ public class Program
         var port = Environment.GetEnvironmentVariable("PORT") ?? "2000";
 
         return Host.CreateDefaultBuilder(args)
+            .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
