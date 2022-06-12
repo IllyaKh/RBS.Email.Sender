@@ -19,14 +19,14 @@ jobs:
           dotnet-version: '6.0.x'
 
       - name: Restore dependencies ⛓️
-        run: dotnet restore RBS.Email.Sender.WebApi
+        run: dotnet restore RBS.Email.Sender
       
       - name: Build an application 🚀
         id: dotnet_build_app
-        run: dotnet build RBS.Email.Sender.WebApi -c Release --no-restore
+        run: dotnet build RBS.Email.Sender -c Release --no-restore
 
       - name: Test with the dotnet CLI 🧻
-        run: dotnet test RBS.Email.Sender.WebApi
+        run: dotnet test RBS.Email.Sender
     
   notifyTelegram:
     needs: build
