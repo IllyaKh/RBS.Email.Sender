@@ -56,7 +56,7 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: | 
-        cd RBS.Email.Sender.WebApi && \
+        cd RBS.Email.Sender && \
         heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
     - name: Release
       env:
