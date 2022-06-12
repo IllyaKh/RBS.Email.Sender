@@ -15,11 +15,11 @@ namespace RBS.Email.Sender.DataAccess.MongoModels
 
         public EmailType EmailType { get; set; }
 
-        public string ToEmail { get; set; }
+        public string? ToEmail { get; set; }
 
-        public string CcEmail { get; set; }
+        public string? CcEmail { get; set; }
 
-        public string Content { get; set; }
+        public string? Content { get; set; }
 
         public bool IsHtml { get; set; }
 
@@ -29,9 +29,9 @@ namespace RBS.Email.Sender.DataAccess.MongoModels
         {
             Subject = model.Subject;
             EmailType = EmailType.RegistrationConfirm;
-            ToEmail = model.ToAddresses.First(); 
-            CcEmail = model.CcAddresses.First();
-            Content = model.Content;
+            ToEmail = model?.ToAddresses?.FirstOrDefault(); 
+            CcEmail = model?.CcAddresses.FirstOrDefault();
+            Content = model?.Content;
             IsHtml = model.IsHtml;
             IsSuccess = isSuccess;
         }

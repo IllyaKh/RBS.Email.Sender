@@ -30,7 +30,6 @@ public class SenderService : ISenderService
         var isSuccess = false;
         try
         {
-            _logger.LogError("Test 1");
             var email = new MimeMessage();
 
             email.From.Add(MailboxAddress.Parse(_emailOptions.Email));
@@ -49,12 +48,10 @@ public class SenderService : ISenderService
         }
         catch
         {
-            _logger.LogError("Test2");
             throw;
         }
         finally
         {
-            _logger.LogError("Test3");
             await _emailDataService.AddEmailToHistory(model, isSuccess);
         }
 
