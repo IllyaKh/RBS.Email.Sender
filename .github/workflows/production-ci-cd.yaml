@@ -1,0 +1,68 @@
+name: CI/CD RBS.Email.Sender for production
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      build_result: ${{ steps.dotnet_build_app.RESULT_BUILD }}
+    steps:
+      - name: Checkout code 💩
+        uses: actions/checkout@v2
+        
+      - name: Setup .NET 6 🔑
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Restore dependencies ⛓️
+        run: dotnet restore RBS.Email.Sender.WebApi
+      
+      - name: Build an application 🚀
+        id: dotnet_build_app
+        run: dotnet build RBS.Email.Sender.WebApi -c Release --no-restore
+
+      - name: Test with the dotnet CLI 🧻
+        run: dotnet test RBS.Email.Sender.WebApi
+    
+  notifyTelegram:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send build result to Telegram 📫
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} pushed ${{ github.head_ref }} to production:
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+  herokuPush:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to Heroku Container registry
+      env: 
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:login 
+    - name: Build and push
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: | 
+        cd RBS.Email.Sender.WebApi && \
+        heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
+    - name: Release
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+            
+
+
+      

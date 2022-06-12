@@ -2,6 +2,8 @@
 
 namespace RBS.Email.Sender.WebApi.Controllers
 {
+    [Route("[controller]")]
+    [ApiController]
     public class IsAliveController : ControllerBase
     {
         private readonly IWebHostEnvironment _env;

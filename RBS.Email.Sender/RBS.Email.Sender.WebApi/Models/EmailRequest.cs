@@ -6,7 +6,7 @@
 		public List<string> FromAddresses { get; set; }
 		public List<string> CcAddresses { get; set; }
 
-		public byte[] Attachment { get; set; }
+		public byte[]? Attachment { get; set; }
 		public string Subject { get; set; }
 		public string Content { get; set; }
 

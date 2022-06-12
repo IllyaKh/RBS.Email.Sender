@@ -6,6 +6,8 @@ using RBS.Email.Sender.WebApi.Models;
 
 namespace RBS.Email.Sender.WebApi.Controllers
 {
+    [Route("api/[controller]/[action]")]
+    [ApiController]
     public class SenderController : ControllerBase
     {
         private readonly ISenderService _senderService;
@@ -18,13 +20,15 @@ namespace RBS.Email.Sender.WebApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpPost]
         public async Task<IActionResult> SendMessage(EmailRequest model)
         {
-            await _senderService.Send(_mapper.Map<EmailModel>(model));
+            _senderService.Send(_mapper.Map<EmailModel>(model));
 
             return Ok();
         }
 
+        [HttpGet]
         public async Task<IActionResult> SendMessages(IEnumerable<EmailRequest> models)
         {
             throw new NotImplementedException();
