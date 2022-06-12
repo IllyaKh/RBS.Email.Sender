@@ -1,34 +1,26 @@
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
+using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using RBS.Email.Sender.WebApi;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace RBS.Email.Sender.WebApi;
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
-
-builder.Services.AddSwaggerGen(options =>
+public class Program
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "RBS.Auth.WebApi", Version = "v1" });
-});
+    public static void Main(string[] args)
+    {
+        CreateHostBuilder(args).Build().Run();
+    }
 
-var app = builder.Build();
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "2000";
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+        return Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+                webBuilder.UseUrls("http://*:" + port);
+            });
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

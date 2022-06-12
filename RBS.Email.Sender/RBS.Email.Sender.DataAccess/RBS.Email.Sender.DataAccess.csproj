@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MailKit" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\RBS.Email.Sender.DataAccess\RBS.Email.Sender.DataAccess.csproj" />
-    <ProjectReference Include="..\RBS.Email.Sender.Models\RBS.Email.Sender.Common.csproj" />
+    <PackageReference Include="MongoDB.Bson" Version="2.16.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.16.0" />
   </ItemGroup>
 
   <ItemGroup>

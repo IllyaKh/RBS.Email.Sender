@@ -4,5 +4,5 @@ namespace RBS.Email.Sender.Services.Interface;
 
 public interface ISenderService
 {
-    Task Send(EmailModel model);
+    void Send(EmailModel model);
 }
