@@ -25,7 +25,7 @@ public class SenderService : ISenderService
         _logger = logger;
     }
 
-    public void Send(EmailModel model)
+    public async Task Send(EmailModel model)
     {
         var isSuccess = false;
         try
@@ -55,7 +55,7 @@ public class SenderService : ISenderService
         finally
         {
             _logger.LogError("Test3");
-            _emailDataService.AddEmailToHistory(model, isSuccess);
+            await _emailDataService.AddEmailToHistory(model, isSuccess);
         }
 
     }
